@@ -3,7 +3,7 @@ author: Michael Gilbert <mgilbert@debian.org>
 
 --- a/BUILD.gn
 +++ b/BUILD.gn
-@@ -329,7 +329,7 @@ group("gn_all") {
+@@ -357,7 +357,7 @@ group("gn_all") {
    # Allow building md5sum tool for other OSes (android is added below).
    # For Windows, see: crbug.com/1090428.
    # TODO(cavalcantii): move it out of 'android' folder.
@@ -12,7 +12,7 @@ author: Michael Gilbert <mgilbert@debian.org>
      deps += [ "//tools/android/md5sum" ]
    }
  
-@@ -411,7 +411,7 @@ group("gn_all") {
+@@ -438,7 +438,7 @@ group("gn_all") {
    #       seems currently broken for this platform at the moment, and the
    #       corresponding code build and works on Linux unmodified.
    #       See instructions in the corresponding BUILD.gn.
@@ -29,6 +29,6 @@ author: Michael Gilbert <mgilbert@debian.org>
  
 -import("//chrome/android/channel.gni")
 -
- # Chrome can be built with any combination of v1/v2 enabled.
- # When both are enabled, we use the InterestFeedV2 feature to select which
- # one is used at runtime.
+ declare_args() {
+   # Whether Feed is enabled in the build.
+   enable_feed_v2 = is_android

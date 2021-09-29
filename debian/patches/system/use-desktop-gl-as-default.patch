@@ -5,7 +5,7 @@ Forwarded: not-needed
 Last-Update: 2021-01-07
 --- a/ui/gl/init/gl_factory.cc
 +++ b/ui/gl/init/gl_factory.cc
-@@ -68,6 +68,16 @@ GLImplementation GetRequestedGLImplement
+@@ -79,6 +79,16 @@ GLImplementation GetRequestedGLImplement
      }
    }
  
@@ -21,4 +21,4 @@ Last-Update: 2021-01-07
 +
    if (allowed_impls.empty()) {
      LOG(ERROR) << "List of allowed GL implementations is empty.";
-     return kGLImplementationNone;
+     return GLImplementationParts(kGLImplementationNone);
