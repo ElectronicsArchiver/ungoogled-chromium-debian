@@ -3,7 +3,7 @@ author: Michael Gilbert <mgilbert@debian.org>
 
 --- a/BUILD.gn
 +++ b/BUILD.gn
-@@ -1050,7 +1050,6 @@
+@@ -1098,7 +1098,6 @@
        "//services/device/public/mojom:usb_js_data_deps",
        "//services/shape_detection/public/mojom:mojom_js_data_deps",
        "//skia/public/mojom:mojom_js_data_deps",
@@ -11,19 +11,19 @@ author: Michael Gilbert <mgilbert@debian.org>
        "//third_party/blink/public:blink_devtools_frontend_resources_files",
        "//third_party/blink/public:blink_devtools_inspector_resources",
        "//third_party/blink/public/mojom:mojom_platform_js_data_deps",
---- a/cc/BUILD.gn
-+++ b/cc/BUILD.gn
-@@ -855,7 +855,6 @@
-     "//ui/gl:test_support",
-   ]
-   data_deps = [
--    "//testing/buildbot/filters:cc_unittests_filters",
-     "//third_party/mesa_headers",
+--- a/base/BUILD.gn
++++ b/base/BUILD.gn
+@@ -3190,7 +3190,6 @@
+     "//base/test:immediate_crash_test_helper",
+     "//base/test:test_child_process",
+     "//base/test:test_shared_library",
+-    "//testing/buildbot/filters:base_unittests_filters",
    ]
  
+   if (is_apple) {
 --- a/chrome/test/BUILD.gn
 +++ b/chrome/test/BUILD.gn
-@@ -914,8 +914,6 @@
+@@ -1303,8 +1303,6 @@
        "//ppapi:copy_test_files",
        "//ppapi:copy_test_files2",
        "//ppapi:ppapi_tests",
@@ -32,15 +32,15 @@ author: Michael Gilbert <mgilbert@debian.org>
        "//third_party/mesa_headers",
        "//third_party/widevine/cdm:widevine_test_license_server",
        "//tools/media_engagement_preload:generator",
-@@ -1740,7 +1738,6 @@
-       data_deps += [
-         "//ash/keyboard/ui:resources",
-         "//chrome",
+@@ -2206,7 +2204,6 @@
+         "//chrome/test/data/webui/cr_components/chromeos/network_health:modulize_runtime_data",
+         "//chrome/test/data/webui/nearby_share/shared:modulize_runtime_data",
+         "//chrome/test/data/webui/settings/chromeos:modulize_runtime_data",
 -        "//testing/buildbot/filters:chromeos_filters",
          "//ui/file_manager:unit_test_data",
        ]
  
-@@ -4145,7 +4142,6 @@
+@@ -4910,7 +4907,6 @@
    data_deps = [
      "//chrome/test/data/media/engagement/preload:generate_preload_list",
      "//chrome/test/data/media/engagement/preload:test_data",
@@ -48,7 +48,7 @@ author: Michael Gilbert <mgilbert@debian.org>
    ]
  
    data = [
-@@ -5925,7 +5921,6 @@
+@@ -7065,7 +7061,6 @@
        "//chrome/browser/chromeos:unit_tests",
        "//chromeos/ime:gencode",
      ]
@@ -56,22 +56,91 @@ author: Michael Gilbert <mgilbert@debian.org>
      sources -=
          [ "../browser/policy/cloud/user_policy_signin_service_unittest.cc" ]
    }
-@@ -6699,7 +6694,6 @@
-     data_deps = [
+@@ -8015,7 +8010,6 @@
        "//chrome:browser_tests_pak",
+       "//chrome/test/data:web_ui_test_mojom_js_module",
        "//ppapi:ppapi_tests",
 -      "//testing/buildbot/filters:interactive_ui_tests_filters",
        "//third_party/mesa_headers",
        "//ui/resources:ui_test_pak_data",
      ]
-@@ -7302,7 +7296,6 @@
-     ]
+@@ -8628,7 +8622,6 @@
  
      data_deps = [
--      "//testing/buildbot/filters:e2e_sync_integration_tests_filters",
+       "//testing:test_scripts_shared",
+-      "//testing/buildbot/filters:sync_integration_tests_filters",
        "//third_party/mesa_headers",
      ]
  
+--- a/third_party/breakpad/BUILD.gn
++++ b/third_party/breakpad/BUILD.gn
+@@ -741,7 +741,6 @@
+ 
+     data_deps = [
+       ":linux_dumper_unittest_helper",
+-      "//testing/buildbot/filters:breakpad_unittests_filters",
+     ]
+ 
+     include_dirs = [
+--- a/content/test/BUILD.gn
++++ b/content/test/BUILD.gn
+@@ -1481,7 +1481,6 @@
+ 
+   data_deps = [
+     "//content/shell:pak",
+-    "//testing/buildbot/filters:content_browsertests_filters",
+     "//third_party/mesa_headers",
+   ]
+ 
+@@ -2502,7 +2501,6 @@
+   ]
+ 
+   data_deps = [
+-    "//testing/buildbot/filters:content_unittests_filters",
+     "//third_party/mesa_headers",
+   ]
+ 
+--- a/media/BUILD.gn
++++ b/media/BUILD.gn
+@@ -179,7 +179,6 @@
+     "formats/mp4/h264_annex_b_fuzz_corpus/",
+   ]
+ 
+-  data_deps = [ "//testing/buildbot/filters:media_unittests_filters" ]
+ 
+   if (media_use_ffmpeg) {
+     deps += [ "//media/ffmpeg:unit_tests" ]
+--- a/net/BUILD.gn
++++ b/net/BUILD.gn
+@@ -4530,7 +4530,6 @@
+   data = []
+   data_deps = [
+     "third_party/nist-pkits/",
+-    "//testing/buildbot/filters:net_unittests_filters",
+   ]
+ 
+   if (is_linux || is_chromeos || is_mac || is_win || is_fuchsia) {
+--- a/cc/BUILD.gn
++++ b/cc/BUILD.gn
+@@ -861,7 +861,6 @@
+     "//ui/gl:test_support",
+   ]
+   data_deps = [
+-    "//testing/buildbot/filters:cc_unittests_filters",
+     "//third_party/mesa_headers",
+   ]
+ 
+--- a/components/BUILD.gn
++++ b/components/BUILD.gn
+@@ -190,7 +190,7 @@
+     "//components/webdata_services:unit_tests",
+   ]
+ 
+-  data_deps = [ "//testing/buildbot/filters:components_unittests_filters" ]
++  data_deps = []
+ 
+   if (toolkit_views) {
+     deps += [
 --- a/components/viz/BUILD.gn
 +++ b/components/viz/BUILD.gn
 @@ -26,7 +26,6 @@
@@ -82,27 +151,9 @@ author: Michael Gilbert <mgilbert@debian.org>
      "//third_party/mesa_headers",
    ]
  
---- a/content/test/BUILD.gn
-+++ b/content/test/BUILD.gn
-@@ -1381,7 +1381,6 @@
- 
-   data_deps = [
-     "//content/shell:pak",
--    "//testing/buildbot/filters:content_browsertests_filters",
-     "//third_party/mesa_headers",
-   ]
- 
-@@ -2334,7 +2333,6 @@
-   ]
- 
-   data_deps = [
--    "//testing/buildbot/filters:content_unittests_filters",
-     "//third_party/mesa_headers",
-   ]
- 
 --- a/gpu/BUILD.gn
 +++ b/gpu/BUILD.gn
-@@ -445,7 +445,6 @@
+@@ -455,7 +455,6 @@
      ]
    }
  
@@ -110,37 +161,6 @@ author: Michael Gilbert <mgilbert@debian.org>
  }
  
  test("gpu_unittests") {
---- a/media/BUILD.gn
-+++ b/media/BUILD.gn
-@@ -176,7 +176,6 @@
-     "formats/mp4/h264_annex_b_fuzz_corpus/",
-   ]
- 
--  data_deps = [ "//testing/buildbot/filters:media_unittests_filters" ]
- 
-   if (media_use_ffmpeg) {
-     deps += [ "//media/ffmpeg:unit_tests" ]
---- a/net/BUILD.gn
-+++ b/net/BUILD.gn
-@@ -4568,7 +4568,6 @@
-   data = []
-   data_deps = [
-     "third_party/nist-pkits/",
--    "//testing/buildbot/filters:net_unittests_filters",
-   ]
- 
-   if (is_linux || is_chromeos || is_mac || is_win || is_fuchsia) {
---- a/components/BUILD.gn
-+++ b/components/BUILD.gn
-@@ -185,7 +185,7 @@ test("components_unittests") {
-     "//components/webdata_services:unit_tests",
-   ]
- 
--  data_deps = [ "//testing/buildbot/filters:components_unittests_filters" ]
-+  data_deps = []
- 
-   if (toolkit_views) {
-     deps += [
 --- a/sandbox/linux/BUILD.gn
 +++ b/sandbox/linux/BUILD.gn
 @@ -203,7 +203,6 @@
@@ -151,24 +171,24 @@ author: Michael Gilbert <mgilbert@debian.org>
    if (is_android) {
      use_raw_android_executable = true
    }
---- a/ui/base/BUILD.gn
-+++ b/ui/base/BUILD.gn
-@@ -924,7 +924,7 @@ test("ui_base_unittests") {
-   }
+--- a/third_party/blink/renderer/controller/BUILD.gn
++++ b/third_party/blink/renderer/controller/BUILD.gn
+@@ -128,7 +128,6 @@
+   data_deps = [
+     ":blink_unittests_data",
+     "//content/shell:pak",
+-    "//testing/buildbot/filters:blink_unittests_filters",
+   ]
  
-   data = []
--  data_deps = [ "//testing/buildbot/filters:ui_base_unittests_filters" ]
-+  data_deps = []
-   deps = [
-     ":ui_base_test_resources_grit",
-     ":ui_base_unittests_bundle_data",
---- a/third_party/breakpad/BUILD.gn
-+++ b/third_party/breakpad/BUILD.gn
-@@ -724,7 +724,6 @@
- 
-     data_deps = [
-       ":linux_dumper_unittest_helper",
--      "//testing/buildbot/filters:breakpad_unittests_filters",
+   if (is_android) {
+--- a/third_party/crashpad/crashpad/BUILD.gn
++++ b/third_party/crashpad/crashpad/BUILD.gn
+@@ -31,8 +31,6 @@
+       "util:util_test",
      ]
  
-     include_dirs = [
+-    data_deps = [ "//testing/buildbot/filters:crashpad_tests_filters" ]
+-
+     if (!crashpad_is_ios && !crashpad_is_fuchsia) {
+       deps += [ "handler:handler_test" ]
+     }
